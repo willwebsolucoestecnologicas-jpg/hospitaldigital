@@ -18,39 +18,62 @@
         </header>
 
         <main class="app-content">
-            <section class="app-section">
-                <h3>Sua Última Consulta</h3>
-                <div class="card-consulta" id="containerConsulta">
-                    <p>Buscando informações no sistema...</p>
+            
+            <div id="tela-inicio" class="tela-app ativa">
+                <section class="app-section">
+                    <h3>Sua Última Consulta</h3>
+                    <div class="card-consulta" id="containerConsulta">
+                        <p>Buscando informações no sistema...</p>
                     </div>
-            </section>
+                </section>
 
-            <section class="app-section">
-                <h3>Receita Ativa</h3>
-                <div class="card-receita">
-                    <div class="receita-header">
-                        <span class="icon-receita">💊</span>
-                        <h4>Prescrição Digital</h4>
+                <section class="app-section">
+                    <h3>Receita Ativa</h3>
+                    <div class="card-receita">
+                        <div class="receita-header">
+                            <span class="icon-receita">💊</span>
+                            <h4>Prescrição Digital</h4>
+                        </div>
+                        <ul class="lista-medicamentos" id="listaPrescricao"></ul>
+                        <div class="busca-farmacia">
+                            <button class="btn-submit btn-farmacia">🛒 Pesquisar em Farmácias Locais</button>
+                        </div>
                     </div>
-                    
-                    <ul class="lista-medicamentos" id="listaPrescricao">
-                        </ul>
-                    
-                    <div class="busca-farmacia">
-                        <p id="avisoEstoque" style="display:none; color: #C62828; font-size: 0.85rem; margin-bottom: 0.8rem;">
-                            Alguns itens podem estar indisponíveis na rede pública.
-                        </p>
-                        <button class="btn-submit btn-farmacia">🛒 Pesquisar em Farmácias Locais</button>
+                </section>
+            </div>
+
+            <div id="tela-historico" class="tela-app">
+                <section class="app-section">
+                    <h3>Histórico Completo</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Aqui aparecerão todas as suas consultas anteriores.</p>
+                    </section>
+            </div>
+
+            <div id="tela-receitas" class="tela-app">
+                <section class="app-section">
+                    <h3>Minhas Receitas</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Aqui ficará o arquivo de receitas e a busca avançada nas farmácias.</p>
+                </section>
+            </div>
+
+            <div id="tela-perfil" class="tela-app">
+                <section class="app-section">
+                    <h3>Meu Perfil</h3>
+                    <div class="card-consulta" style="text-align: center;">
+                        <div class="user-avatar" style="margin: 0 auto 1rem; width: 60px; height: 60px; font-size: 2rem;">👤</div>
+                        <h4>Paciente SUS</h4>
+                        <p>Gerencie seus dados e configurações do aplicativo aqui.</p>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
+
         </main>
 
         <nav class="bottom-nav">
-            <a href="#" class="nav-item ativo">Início</a>
-            <a href="#" class="nav-item">Histórico</a>
-            <a href="#" class="nav-item">Receitas</a>
-            <a href="#" class="nav-item">Perfil</a>
+            <a href="#" class="nav-item ativo" onclick="mudarTela('inicio', this)">Início</a>
+            <a href="#" class="nav-item" onclick="mudarTela('historico', this)">Histórico</a>
+            <a href="#" class="nav-item" onclick="mudarTela('receitas', this)">Receitas</a>
+            <a href="#" class="nav-item" onclick="mudarTela('perfil', this)">Perfil</a>
         </nav>
 
     </div>
