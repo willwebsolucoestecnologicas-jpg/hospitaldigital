@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Paciente - Triagem Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Novo Paciente</h1>
+            <p>Preencha os dados para o cadastro unificado.</p>
+        </header>
+
+        <form id="cadastroForm">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" required>
+                </div>
+                <div class="form-group half">
+                    <label for="cpf">CPF</label>
+                    <input type="number" id="cpf" name="cpf" placeholder="Apenas números" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half">
+                    <label for="cartaoSus">Cartão do SUS</label>
+                    <input type="number" id="cartaoSus" name="cartaoSus" placeholder="Número do cartão" required>
+                </div>
+                <div class="form-group half">
+                    <label for="contato">Contato de Emergência</label>
+                    <input type="number" id="contato" name="contato" placeholder="(DDD) 00000-0000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço Completo</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro" required>
+            </div>
+
+            <div class="form-group">
+                <label>Condições de Saúde (Opcional)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="condicoes" value="Hipertenso"> Hipertenso</label>
+                    <label><input type="checkbox" name="condicoes" value="Diabetico"> Diabético</label>
+                    <label><input type="checkbox" name="condicoes" value="Alergia"> Alergia a Medicamentos</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Salvar Cadastro</button>
+        </form>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

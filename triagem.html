@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triagem - Sistema Hospitalar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container container-large">
+        <header>
+            <h1>Triagem Digital</h1>
+            <div class="paciente-info">
+                <strong>Paciente em atendimento:</strong> João da Silva (35 anos)
+            </div>
+        </header>
+
+        <form id="triagemForm">
+            <fieldset class="section-box">
+                <legend>Sinais Vitais</legend>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="pa">Pressão Arterial (PA)</label>
+                        <input type="text" id="pa" name="pa" placeholder="Ex: 120x80 mmHg">
+                    </div>
+                    <div class="form-group half">
+                        <label for="hgt">Glicemia (HGT)</label>
+                        <input type="number" id="hgt" name="hgt" placeholder="mg/dl">
+                    </div>
+                    <div class="form-group half">
+                        <label for="temp">Temp. (°C)</label>
+                        <input type="number" id="temp" name="temp" step="0.1" placeholder="Ex: 36.5">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="fc">Freq. Cardíaca (bpm)</label>
+                        <input type="number" id="fc" name="fc" placeholder="bpm">
+                    </div>
+                    <div class="form-group half">
+                        <label for="spo2">Saturação (SpO2 %)</label>
+                        <input type="number" id="spo2" name="spo2" placeholder="%">
+                    </div>
+                    <div class="form-group half">
+                        <label for="peso">Peso (kg)</label>
+                        <input type="number" id="peso" name="peso" step="0.1" placeholder="kg">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="section-box">
+                <legend>Avaliação Clínica</legend>
+                <div class="form-group">
+                    <label for="queixas">Queixas Principais</label>
+                    <textarea id="queixas" name="queixas" rows="3" placeholder="Descreva os sintomas relatados pelo paciente..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Hábitos</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="habitos" value="Tabagismo"> Tabagismo</label>
+                        <label><input type="checkbox" name="habitos" value="Etilismo"> Etilismo</label>
+                        <label><input type="checkbox" name="habitos" value="Drogas"> Drogas Ilícitas</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="section-box">
+                <legend>Classificação de Risco</legend>
+                <div class="risco-group">
+                    <label class="risco-btn vermelho">
+                        <input type="radio" name="classificacao" value="Vermelho" required> Emergência (Vermelho)
+                    </label>
+                    <label class="risco-btn laranja">
+                        <input type="radio" name="classificacao" value="Laranja"> Muito Urg. (Laranja)
+                    </label>
+                    <label class="risco-btn amarelo">
+                        <input type="radio" name="classificacao" value="Amarelo"> Urgente (Amarelo)
+                    </label>
+                    <label class="risco-btn verde">
+                        <input type="radio" name="classificacao" value="Verde"> Pouco Urg. (Verde)
+                    </label>
+                    <label class="risco-btn azul">
+                        <input type="radio" name="classificacao" value="Azul"> Não Urg. (Azul)
+                    </label>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Salvar Triagem e Enviar ao Médico</button>
+        </form>
+    </div>
+    <script src="triagem.js"></script>
+</body>
+</html>

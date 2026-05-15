@@ -1,0 +1,462 @@
+:root {
+    /* Paleta moderna */
+    --primary-color: #00BFA5; /* Verde tecnológico */
+    --primary-hover: #009688;
+    --bg-color: #F4F7F6;
+    --text-color: #333333;
+    --card-bg: #FFFFFF;
+    --border-color: #E0E0E0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 600px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.half {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Remove as setinhas dos inputs numéricos */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.15);
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.checkbox-group label:hover {
+    background-color: #ececec;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* Ajuste de container para telas com mais campos */
+.container-large {
+    max-width: 800px;
+}
+
+.paciente-info {
+    background-color: #E8F5E9; /* Fundo verde clarinho */
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 2rem;
+    color: #2E7D32;
+}
+
+.section-box {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: #FAFAFA;
+}
+
+.section-box legend {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.15);
+}
+
+/* Botões de Classificação de Risco */
+.risco-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.risco-btn {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 0.8rem 0.5rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    font-size: 0.85rem;
+}
+
+.risco-btn input[type="radio"] {
+    display: none; /* Esconde a bolinha padrão do rádio */
+}
+
+/* Efeito quando selecionado (o CSS :has é super moderno e útil aqui) */
+.risco-btn:has(input:checked) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 2px solid #333;
+}
+
+.risco-btn:not(:has(input:checked)) {
+    opacity: 0.7;
+}
+
+.risco-btn:hover {
+    opacity: 1;
+}
+
+/* Cores do Protocolo de Risco */
+.vermelho { background-color: #F44336; }
+.laranja { background-color: #FF9800; }
+.amarelo { background-color: #FFEB3B; color: #333; } /* Texto escuro para dar contraste no amarelo */
+.verde { background-color: #4CAF50; }
+.azul { background-color: #2196F3; }
+
+/* Layout Base do Dashboard do Médico */
+.medico-body {
+    padding: 1rem;
+    height: 100vh; /* Ocupa a tela toda */
+    overflow: hidden;
+}
+
+.dashboard-medico {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Fila com 320px, o resto para o atendimento */
+    gap: 1.5rem;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Coluna da Fila de Espera */
+.fila-sidebar {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Adiciona rolagem se a fila crescer */
+}
+
+.fila-sidebar h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.card-paciente {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #fff;
+}
+
+.card-paciente:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.card-paciente.ativo {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 191, 165, 0.15);
+    background-color: #F0FAF8;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.badge-risco {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Reutilizando as cores de risco que criamos na triagem */
+.badge-risco.amarelo { color: #333; }
+
+.tempo-espera {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.card-paciente h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.card-paciente p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Painel de Atendimento Principal */
+.painel-atendimento {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow-y: auto;
+}
+
+.header-atendimento {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-principal h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.atendimento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide a triagem e a conduta no meio */
+    gap: 2rem;
+}
+
+.lista-sinais {
+    list-style: none;
+}
+
+.lista-sinais li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3rem;
+}
+
+/* Caixa Especial para a Inteligência Artificial */
+.box-ia {
+    background: linear-gradient(145deg, #F3E5F5, #FFF); /* Um tom de roxo/mágico para destacar a IA */
+    border: 1px solid #CE93D8;
+    border-left: 4px solid #9C27B0;
+}
+
+.box-ia legend {
+    background-color: #9C27B0; /* Cor diferente para destacar que é a IA falando */
+}
+
+.alerta-ia {
+    font-size: 0.9rem;
+    color: #4A148C;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.btn-finalizar {
+    margin-top: 2rem;
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS DO APP DO PACIENTE
+   ========================================= */
+.app-body {
+    background-color: #e0e0e0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    background-color: var(--bg-color);
+    width: 100%;
+    max-width: 414px; /* Simula a largura de um celular */
+    height: 100vh;
+    max-height: 896px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.app-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.user-greeting h2 { font-size: 1.4rem; margin-bottom: 0.2rem; }
+.user-greeting p { font-size: 0.85rem; opacity: 0.9; }
+
+.user-avatar {
+    width: 45px; height: 45px;
+    background-color: white; color: var(--primary-color);
+    border-radius: 50%; display: flex; justify-content: center;
+    align-items: center; font-size: 1.5rem; font-weight: bold;
+}
+
+.app-content {
+    flex: 1; overflow-y: auto; padding: 1.5rem;
+    padding-bottom: 80px; /* Espaço para não cobrir o menu inferior */
+}
+
+.app-section { margin-bottom: 2rem; }
+.app-section h3 { font-size: 1.1rem; color: #555; margin-bottom: 1rem; }
+
+.card-consulta, .card-receita {
+    background-color: white; border-radius: 12px;
+    padding: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.consulta-data { font-size: 0.8rem; color: var(--primary-color); font-weight: bold; margin-bottom: 0.5rem; }
+.card-consulta h4 { margin-bottom: 0.5rem; }
+.card-consulta p { font-size: 0.9rem; color: #666; margin-bottom: 0.3rem; }
+
+.receita-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.8rem; }
+.lista-medicamentos { list-style: none; }
+.lista-medicamentos li { margin-bottom: 1rem; }
+.med-info strong { display: block; font-size: 0.95rem; }
+
+.busca-farmacia { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed #ccc; text-align: center; }
+.btn-farmacia { background-color: #333; margin-top: 0; }
+
+.bottom-nav {
+    position: absolute; bottom: 0; width: 100%;
+    background-color: white; display: flex; justify-content: space-around;
+    padding: 1rem 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    border-top-left-radius: 15px; border-top-right-radius: 15px;
+}
+
+.nav-item { text-decoration: none; color: #888; font-size: 0.85rem; font-weight: 600; }
+.nav-item.ativo { color: var(--primary-color); }

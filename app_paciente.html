@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meu SUS Digital - Luís Gomes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+    <div class="app-container">
+        
+        <header class="app-header">
+            <div class="user-greeting">
+                <h2 id="nomeUsuario">Olá! 👋</h2>
+                <p id="susUsuario">Cartão SUS: Carregando...</p>
+            </div>
+            <div class="user-avatar" id="avatarUsuario">?</div>
+        </header>
+
+        <main class="app-content">
+            <section class="app-section">
+                <h3>Sua Última Consulta</h3>
+                <div class="card-consulta" id="containerConsulta">
+                    <p>Buscando informações no sistema...</p>
+                    </div>
+            </section>
+
+            <section class="app-section">
+                <h3>Receita Ativa</h3>
+                <div class="card-receita">
+                    <div class="receita-header">
+                        <span class="icon-receita">💊</span>
+                        <h4>Prescrição Digital</h4>
+                    </div>
+                    
+                    <ul class="lista-medicamentos" id="listaPrescricao">
+                        </ul>
+                    
+                    <div class="busca-farmacia">
+                        <p id="avisoEstoque" style="display:none; color: #C62828; font-size: 0.85rem; margin-bottom: 0.8rem;">
+                            Alguns itens podem estar indisponíveis na rede pública.
+                        </p>
+                        <button class="btn-submit btn-farmacia">🛒 Pesquisar em Farmácias Locais</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item ativo">Início</a>
+            <a href="#" class="nav-item">Histórico</a>
+            <a href="#" class="nav-item">Receitas</a>
+            <a href="#" class="nav-item">Perfil</a>
+        </nav>
+
+    </div>
+
+    <script src="app_paciente.js"></script>
+</body>
+</html>
