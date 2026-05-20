@@ -460,3 +460,47 @@ textarea:focus {
 
 .nav-item { text-decoration: none; color: #888; font-size: 0.85rem; font-weight: 600; }
 .nav-item.ativo { color: var(--primary-color); }
+
+/* =========================================
+   RESPONSIVIDADE - TELA DO MÉDICO (MOBILE)
+   ========================================= */
+@media screen and (max-width: 900px) {
+    /* Libera a altura fixa para permitir a rolagem natural no celular */
+    .medico-body {
+        height: auto;
+        overflow-y: auto;
+        padding: 0.5rem;
+    }
+
+    /* Muda o grid principal de duas colunas para uma coluna empilhada */
+    .dashboard-medico {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+
+    /* Ajusta a fila de espera para ficar no topo, com limite de altura */
+    .fila-sidebar {
+        max-height: 350px; /* Cria uma barra de rolagem só para a fila */
+        border-bottom: 3px solid var(--primary-color);
+        padding: 1rem;
+    }
+
+    /* Ajusta o espaçamento do painel principal */
+    .painel-atendimento {
+        padding: 1rem;
+        overflow-y: visible;
+    }
+
+    /* Empilha a área de "Dados da Triagem" e a área de "Conduta Médica" */
+    .atendimento-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Ajusta o tamanho da fonte do título para não quebrar a tela */
+    .info-principal h1 {
+        font-size: 1.4rem;
+    }
+}
