@@ -1,40 +1,49 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbwUj6Zo9Wp936IfY_z1MYX74jqkfk1EfsBCdCb9ETGYaeZuLu9C7iDmnpSud_z7FiJd/exec"; 
 
-// Variável global para guardar quem é o médico que está operando o sistema
+// Variável global para guardar quem é o médico
 let medicoLogado = "";
 
-document.addEventListener("DOMContentLoaded", async () => {
-    // 1. Carrega a lista de médicos para o painel de login
-    try {
-        const resMedicos = await fetch(`${API_URL}?tipo=medicos_lista`);
-        const listaMedicos = await resMedicos.json();
-        
-        const select = document.getElementById('selectMedico');
-        select.innerHTML = '<option value="">Selecione o seu nome...</option>';
-        
-        listaMedicos.forEach(med => {
-            select.innerHTML += `<option value="${med.nome}">${med.nome} (CRM: ${med.crm})</option>`;
-        });
-    } catch (erro) {
-        document.getElementById('selectMedico').innerHTML = '<option value="">Erro ao carregar médicos</option>';
-    }
-
-    // Mantém a lógica que você já tem de carregar a fila de pacientes...
-    carregarFilaEspera(); 
-});
-
-// 2. Lógica do Botão de "Entrar no Plantão"
-document.getElementById('btnEntrarPlantao').addEventListener('click', () => {
-    const select = document.getElementById('selectMedico');
+// Lógica do Botão de "Entrar no Plantão"
+document.getElementById('btnEntrarPlantao').addEventListener('click', async () => {
+    const crmInput = document.getElementById('crmLogin').value;
+    const senhaInput = document.getElementById('senhaLogin').value;
+    const btn = document.getElementById('btnEntrarPlantao');
     
-    if (select.value === "") {
-        alert("Por favor, selecione o seu perfil médico para continuar.");
+    if (!crmInput || !senhaInput) {
+        alert("Por favor, preencha o CRM e a Senha para acessar o sistema.");
         return;
     }
     
-    // Salva o médico na variável e esconde a tela preta
-    medicoLogado = select.value;
-    document.getElementById('loginMedicoOverlay').style.display = 'none';
+    btn.textContent = "Autenticando...";
+    
+    try {
+        const resposta = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                acao: "loginMedico",
+                crm: crmInput,
+                senha: senhaInput
+            })
+        });
+        
+        const res = await resposta.json();
+        
+        if (res.status === "sucesso") {
+            alert(res.mensagem);
+            medicoLogado = res.nome; // Guarda o nome do médico que veio da planilha
+            document.getElementById('loginMedicoOverlay').style.display = 'none';
+            
+            // Agora sim, com o médico logado, carregamos a fila de pacientes
+            carregarFilaEspera(); 
+        } else {
+            // Se errou a senha ou CRM não existe
+            alert(res.mensagem);
+            btn.textContent = "Acessar Painel";
+        }
+    } catch (erro) {
+        alert("Erro de conexão com o servidor. Tente novamente.");
+        btn.textContent = "Acessar Painel";
+    }
 });
 
 // (Coloque a função carregarFilaEspera() isolada aqui se preferir deixar o código mais limpo)
