@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Sistema Hospitalar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestão de Profissionais</h1>
+            <p>Cadastre novos médicos para acesso ao painel de atendimento.</p>
+        </header>
+
+        <form id="cadastroMedicoForm">
+            <div class="form-row">
+                <div class="form-group half">
+                    <label for="crmMedico">CRM</label>
+                    <input type="text" id="crmMedico" placeholder="Ex: 12345-RN" required>
+                </div>
+                <div class="form-group half">
+                    <label for="especialidadeMedico">Especialidade</label>
+                    <input type="text" id="especialidadeMedico" placeholder="Ex: Clínico Geral" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nomeMedico">Nome Completo do Profissional</label>
+                <input type="text" id="nomeMedico" placeholder="Ex: Dr. Carlos Silva" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Registrar Médico</button>
+        </form>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
