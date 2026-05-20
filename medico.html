@@ -7,36 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="medico-body">
+
+    <div id="loginMedicoOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2>Identificação Médica</h2>
+            <p>Selecione seu perfil para iniciar o plantão.</p>
+            
+            <select id="selectMedico" required>
+                <option value="">Carregando médicos da base...</option>
+            </select>
+            
+            <button id="btnEntrarPlantao" class="btn-submit">Acessar Painel</button>
+        </div>
+    </div>
+
     <div class="dashboard-medico">
         
         <aside class="fila-sidebar">
             <h2>Fila de Espera</h2>
             <div class="fila-lista">
-                <div class="card-paciente ativo">
-                    <div class="card-header">
-                        <span class="badge-risco amarelo">Urgente</span>
-                        <span class="tempo-espera">25 min</span>
-                    </div>
-                    <h3>João da Silva</h3>
-                    <p>35 anos | PA: 140x90</p>
-                </div>
-
-                <div class="card-paciente">
-                    <div class="card-header">
-                        <span class="badge-risco verde">Pouco Urg.</span>
-                        <span class="tempo-espera">40 min</span>
-                    </div>
-                    <h3>Maria Oliveira</h3>
-                    <p>62 anos | DM | PA: 120x80</p>
-                </div>
+                <p>Aguardando login para carregar a fila...</p>
             </div>
         </aside>
 
         <main class="painel-atendimento">
             <header class="header-atendimento">
                 <div class="info-principal">
-                    <h1>João da Silva, 35 anos</h1>
-                    <p><strong>Queixa Principal:</strong> Dor no peito irradiando para o braço esquerdo, sudorese.</p>
+                    <h1>Selecione um paciente</h1>
+                    <p><strong>Queixa Principal:</strong> Aguardando seleção...</p>
                 </div>
             </header>
 
@@ -45,18 +43,13 @@
                     <fieldset class="section-box">
                         <legend>Dados da Triagem</legend>
                         <ul class="lista-sinais">
-                            <li><strong>PA:</strong> 140x90 mmHg</li>
-                            <li><strong>FC:</strong> 110 bpm</li>
-                            <li><strong>Temp:</strong> 36.8 °C</li>
-                            <li><strong>SpO2:</strong> 96%</li>
-                            <li><strong>Hábitos/Comorbidades:</strong> Tabagista, Hipertenso</li>
+                            <li>Aguardando dados...</li>
                         </ul>
                     </fieldset>
 
                     <fieldset class="section-box box-ia">
                         <legend>✨ Assistente IA (Análise Prévia)</legend>
-                        <p class="alerta-ia"><strong>Atenção:</strong> Sintomas compatíveis com risco cardiovascular agudo. Sugere-se ECG imediato e avaliação de marcadores de necrose miocárdica.</p>
-                        <p class="alerta-ia"><strong>Interação:</strong> Paciente relata alergia a AAS (Aspirina) no cadastro. Evitar prescrição.</p>
+                        <p class="alerta-ia"><strong>Atenção:</strong> Aguardando seleção de paciente para análise.</p>
                     </fieldset>
                 </div>
 
@@ -78,6 +71,7 @@
             </div>
         </main>
     </div>
+    
     <script src="medico.js"></script>
 </body>
 </html>
