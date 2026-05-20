@@ -504,3 +504,22 @@ textarea:focus {
         font-size: 1.4rem;
     }
 }
+
+
+/* =========================================
+   CONTROLE DAS ABAS DO APLICATIVO (Ocultar/Mostrar)
+   ========================================= */
+.tela-app {
+    display: none; /* Esconde todas as telas por padrão */
+    animation: fadeIn 0.3s ease; /* Efeito suave ao abrir a tela */
+}
+
+.tela-app.ativa {
+    display: block; /* Mostra apenas a tela que foi clicada */
+}
+
+/* Animação suave na troca de abas */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
