@@ -10,12 +10,18 @@
 
     <div id="loginMedicoOverlay" class="login-overlay">
         <div class="login-box">
-            <h2>Identificação Médica</h2>
-            <p>Selecione seu perfil para iniciar o plantão.</p>
+            <h2>Acesso Restrito</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #666;">
+                Digite seu CRM e senha. <br><strong>Primeiro acesso?</strong> A senha digitada será registrada automaticamente.
+            </p>
             
-            <select id="selectMedico" required>
-                <option value="">Carregando médicos da base...</option>
-            </select>
+            <div class="form-group">
+                <input type="text" id="crmLogin" placeholder="CRM (Ex: 12345-RN)" required style="text-align: center; font-weight: bold;">
+            </div>
+            
+            <div class="form-group">
+                <input type="password" id="senhaLogin" placeholder="Sua Senha" required style="text-align: center;">
+            </div>
             
             <button id="btnEntrarPlantao" class="btn-submit">Acessar Painel</button>
         </div>
