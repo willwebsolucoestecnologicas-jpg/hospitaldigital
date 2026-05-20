@@ -1,12 +1,11 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbwUj6Zo9Wp936IfY_z1MYX74jqkfk1EfsBCdCb9ETGYaeZuLu9C7iDmnpSud_z7FiJd/exec"; 
 
-// Variável global para guardar quem é o médico
 let medicoLogado = "";
 
-// Lógica do Botão de "Entrar no Plantão"
+// 1. Lógica do Botão de "Entrar no Plantão" (Login)
 document.getElementById('btnEntrarPlantao').addEventListener('click', async () => {
-    const crmInput = document.getElementById('crmLogin').value;
-    const senhaInput = document.getElementById('senhaLogin').value;
+    const crmInput = document.getElementById('crmLogin').value.trim();
+    const senhaInput = document.getElementById('senhaLogin').value.trim();
     const btn = document.getElementById('btnEntrarPlantao');
     
     if (!crmInput || !senhaInput) {
@@ -30,23 +29,23 @@ document.getElementById('btnEntrarPlantao').addEventListener('click', async () =
         
         if (res.status === "sucesso") {
             alert(res.mensagem);
-            medicoLogado = res.nome; // Guarda o nome do médico que veio da planilha
+            medicoLogado = res.nome; 
             document.getElementById('loginMedicoOverlay').style.display = 'none';
             
-            // Agora sim, com o médico logado, carregamos a fila de pacientes
+            // Login deu certo? Carrega a fila!
             carregarFilaEspera(); 
         } else {
-            // Se errou a senha ou CRM não existe
             alert(res.mensagem);
             btn.textContent = "Acessar Painel";
         }
     } catch (erro) {
+        console.error(erro);
         alert("Erro de conexão com o servidor. Tente novamente.");
         btn.textContent = "Acessar Painel";
     }
 });
 
-// (Coloque a função carregarFilaEspera() isolada aqui se preferir deixar o código mais limpo)
+// 2. Carrega a Fila de Espera
 async function carregarFilaEspera() {
     const filaContainer = document.querySelector('.fila-lista');
     filaContainer.innerHTML = "<p>Carregando fila...</p>";
@@ -83,7 +82,7 @@ async function carregarFilaEspera() {
     }
 }
 
-// Essa função preenche o lado direito quando o médico clica no paciente (Mantém a que você já tinha)
+// 3. Preenche a tela quando clica no paciente
 function carregarAtendimento(paciente) {
     document.querySelector('.info-principal h1').textContent = `${paciente.nome}, ${paciente.idade} anos`;
     document.querySelector('.info-principal p').innerHTML = `<strong>Queixa Principal:</strong> ${paciente.queixas}`;
@@ -94,7 +93,7 @@ function carregarAtendimento(paciente) {
     form.insertAdjacentHTML('beforeend', `<input type="hidden" id="idOcultoMedico" value="${paciente.idAtendimento}">`);
 }
 
-// 3. Atualiza o Salvamento para incluir o "nomeMedico"
+// 4. Salva o Atendimento finalizado
 document.getElementById('atendimentoForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.querySelector('.btn-finalizar');
@@ -110,7 +109,7 @@ document.getElementById('atendimentoForm').addEventListener('submit', async func
     const dadosConsulta = {
         acao: "salvarMedico", 
         idAtendimento: idOculto.value,
-        nomeMedico: medicoLogado, // <--- INSERIMOS A VARIÁVEL AQUI
+        nomeMedico: medicoLogado, 
         diagnostico: document.getElementById('diagnostico').value,
         receita: document.getElementById('receita').value
     };
